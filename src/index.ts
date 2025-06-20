@@ -1,14 +1,8 @@
-import express from 'express';
+import HealthCheckController from "./infra/controller/HealthCheckController";
+import { ExpressServer } from "./infra/http/HttpServer";
 
-const app = express();
-const port = process.env.PORT || 3000;
+const httpServer = new ExpressServer();
 
-app.use(express.json());
+new HealthCheckController(httpServer);
 
-app.get('/', (req, res) => {
-  res.send('Hello world!');
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+httpServer.listen(3000);
