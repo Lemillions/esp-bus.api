@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: oracle-1gb
+    environment: production
 
     steps:
       - name: Atualiza o código
